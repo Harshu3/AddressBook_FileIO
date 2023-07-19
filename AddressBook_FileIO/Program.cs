@@ -30,6 +30,7 @@ namespace AddressBook_FileIO
             Console.WriteLine("\nADDRESS BOOK\n");
             Console.WriteLine("A - Add a Contact Details");
             Console.WriteLine("L - List All Contact Details");
+            Console.WriteLine("E - Edit Contact Details");
             Console.WriteLine("Q - Quit");
         }
 
@@ -82,6 +83,34 @@ namespace AddressBook_FileIO
                         Console.WriteLine("LIST OF CONTACT DETAILS:");
                         book.List((a) => Console.WriteLine("First Name: {0}\n Last Name: {1}\n Address: {2}\n City: {3}\n State: {4}\n Zip Code: {5}\n Phone Number: {6}\n Email: {7} \n-------------", a.firstName, a.lastName, a.address, a.city, a.state, a.zip, a.phone, a.email));
                     }
+                    break;
+                case "E":
+                    Console.WriteLine("Enter contact name you want to edit:");
+                    firstName = Console.ReadLine();
+                    Address addr = book.Find(firstName);
+                    Console.WriteLine("Please choose what details you want to edit from below:");
+                    Console.WriteLine("1.Address\n2.Phone Number");
+                    int option = Convert.ToInt32(Console.ReadLine());
+                    if (addr != null)
+                    {
+                        switch (option)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter new Address:");
+                                addr.address = Console.ReadLine();
+                                Console.WriteLine("Address updated for {0}", firstName);
+                                Console.WriteLine("---------------");
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter new Phone Number:");
+                                addr.phone = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Phone Number Updated for {0}", firstName);
+                                Console.WriteLine("---------------");
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Details for {0} not be found", firstName);
                     break;
             }
         }
