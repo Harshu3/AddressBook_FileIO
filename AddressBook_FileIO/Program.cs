@@ -29,6 +29,7 @@ namespace AddressBook_FileIO
         {
             Console.WriteLine("\nADDRESS BOOK\n");
             Console.WriteLine("A - Add a Contact Details");
+            Console.WriteLine("L - List All Contact Details");
             Console.WriteLine("Q - Quit");
         }
 
@@ -71,6 +72,16 @@ namespace AddressBook_FileIO
                     }
                     else
                         Console.WriteLine("An address is already on file for {0}", firstName);
+                    break;
+                case "L":
+                    if (book.IsEmpty())
+                        Console.WriteLine("There are no entries");
+                    else
+                    {
+                        Console.WriteLine("----------------");
+                        Console.WriteLine("LIST OF CONTACT DETAILS:");
+                        book.List((a) => Console.WriteLine("First Name: {0}\n Last Name: {1}\n Address: {2}\n City: {3}\n State: {4}\n Zip Code: {5}\n Phone Number: {6}\n Email: {7} \n-------------", a.firstName, a.lastName, a.address, a.city, a.state, a.zip, a.phone, a.email));
+                    }
                     break;
             }
         }

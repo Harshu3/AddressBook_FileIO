@@ -35,5 +35,15 @@ namespace AddressBook_FileIO
             Address addr = addresses.Find((a) => a.firstName == name);
             return addr;
         }
+
+        public void List(Action<Address> action)
+        {
+            addresses.ForEach(action);
+        }
+
+        public bool IsEmpty()
+        {
+            return (addresses.Count == 0);
+        }
     }
 }
