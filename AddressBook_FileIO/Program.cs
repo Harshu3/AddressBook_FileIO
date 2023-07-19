@@ -64,15 +64,13 @@ namespace AddressBook_FileIO
                     Console.WriteLine("Enter Email:");
                     email = Console.ReadLine();
 
-                    if (book.add(firstName, lastName, address, city, state, zip, phone, email))
+                    if (book.Add(firstName, lastName, address, city, state, zip, phone, email))
                     {
                         Console.WriteLine("Contact successfully added!");
                         Console.WriteLine("---------------");
                     }
                     else
-                    {
                         Console.WriteLine("An address is already on file for {0}", firstName);
-                    }
                     break;
             }
         }

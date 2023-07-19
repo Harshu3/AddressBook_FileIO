@@ -16,10 +16,10 @@ namespace AddressBook_FileIO
             addresses = new List<Address>();
         }
 
-        public bool add(string firstName, string lastName, string address, string city, string state, int zip, int phone, string email)
+        public bool Add(string firstName, string lastName, string address, string city, string state, int zip, int phone, string email)
         {
             Address addr = new Address(firstName, lastName, address, city, state, zip, phone, email);
-            Address result = find(firstName);
+            Address result = Find(firstName);
 
             if (result == null)
             {
@@ -27,12 +27,10 @@ namespace AddressBook_FileIO
                 return true;
             }
             else
-            {
                 return false;
-            }
         }
 
-        public Address find(string name)
+        public Address Find(string name)
         {
             Address addr = addresses.Find((a) => a.firstName == name);
             return addr;
